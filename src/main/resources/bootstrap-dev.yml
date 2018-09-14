@@ -1,0 +1,6 @@
+server:
+  port: 8080
+spring:
+  cloud:
+    config:
+      uri: http://demo.authserver.config-server:8080
