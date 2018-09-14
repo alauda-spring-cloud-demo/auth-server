@@ -1,4 +1,4 @@
 spring:
   cloud:
     config:
-      uri: http://demo.authserver.config-server:8080
+      uri: http://config-server:8080
