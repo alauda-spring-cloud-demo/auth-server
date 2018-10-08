@@ -10,7 +10,6 @@ create table `users`(
 	account_non_locked boolean not null DEFAULT true,
 	enabled boolean not null DEFAULT true,
 	avatar VARCHAR(1024) null,
-	wxOpenId VARCHAR(128) null,
 	mail VARCHAR(128) null,
 	phone VARCHAR(50) null,
 	display_name VARCHAR(50) null
