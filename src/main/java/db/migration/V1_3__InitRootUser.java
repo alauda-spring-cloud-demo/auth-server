@@ -44,7 +44,7 @@ public class V1_3__InitRootUser implements SpringJdbcMigration {
                 "user",
                 bCryptPasswordEncoder.encode("000000").trim(),
                 true,true,true,true,
-                AuthorityUtils.createAuthorityList("ROLE_ADMIN"),
+                AuthorityUtils.createAuthorityList("ROLE_USER"),
                 null,"","user@demo","18844444444","赵明明");
 
         appUserDetailsManager.createUser(user1);
