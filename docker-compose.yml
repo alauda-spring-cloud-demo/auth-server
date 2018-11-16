@@ -18,6 +18,11 @@ services:
         limits:
           cpus: '0.50'
           memory: 512M
+      labels:
+        - com.df.notify=true
+        - com.df.serviceDomain=cloud.linkme.org.cn
+        - com.df.port=8080
+        - com.df.srcPort=8080
 networks:
   default:
     external:
