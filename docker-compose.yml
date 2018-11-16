@@ -1,0 +1,24 @@
+version: "3"
+
+services:
+  oauth2-server-demo:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    image: "registry-vpc.cn-beijing.aliyuncs.com/alauda-cloud/oauth2-server"
+    environment:
+      - SPRING_PROFILES_ACTIVE=dev
+      - JAVA_OPTS=-Xmx480m
+      - APP_NAME=oauth2-server-demo
+    labels:
+      aliyun.logs.cms-service: "stdout"
+    deploy:
+      replicas: 1
+      resources:
+        limits:
+          cpus: '0.50'
+          memory: 512M
+networks:
+  default:
+    external:
+      name: linkme
