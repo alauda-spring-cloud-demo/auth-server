@@ -3,7 +3,9 @@ spring:
     name: oauth2-server
   cloud:
     config:
-      uri: http://config:8080
+      discovery:
+        enabled: true
+        service-id: config-server
       name: ${spring.application.name}
       fail-fast: true
       retry:  #启用连接失败重试，需要依赖spring-retry和spring-boot-starter-aop
@@ -19,7 +21,7 @@ eureka:
   client:
     registry-fetch-interval-seconds: 5
     service-url:
-      defaultZone: http://${eureka.username}:${eureka.password}@eureka1:${eureka.port}/eureka,http://${eureka.username}:${eureka.password}@eureka2:${eureka.port}/eureka,http://${eureka.username}:${eureka.password}@eureka3:${eureka.port}/eureka
+      defaultZone: http://${eureka.username}:${eureka.password}@eureka1:${eureka.port}/eureka,http://${eureka.username}:${eureka.password}@eureka2:${eureka.port}/eureka
   instance:
     prefer-ip-address: true
     lease-renewal-interval-in-seconds: 5
@@ -32,4 +34,10 @@ spring:
   profiles: default
   cloud:
     config:
+      discovery:
+        enabled: false
       uri: http://config.demo.io
+eureka:
+  client:
+    service-url:
+      defaultZone: http://${eureka.username}:${eureka.password}@eureka1.demo.io/eureka,http://${eureka.username}:${eureka.password}@eureka2.demo.io/eureka

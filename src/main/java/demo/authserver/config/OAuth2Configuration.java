@@ -6,6 +6,7 @@ import demo.authserver.core.UserInfoTokenEnhancer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.Ordered;
@@ -35,6 +36,7 @@ import javax.sql.DataSource;
 import java.util.Arrays;
 import java.util.concurrent.TimeUnit;
 
+@EnableEurekaClient
 @EnableAuthorizationServer
 @Configuration
 public class OAuth2Configuration extends AuthorizationServerConfigurerAdapter {
@@ -133,8 +135,8 @@ public class OAuth2Configuration extends AuthorizationServerConfigurerAdapter {
     public void configure(AuthorizationServerSecurityConfigurer oauthServer){
         oauthServer
                 .tokenKeyAccess("permitAll()")//公开/oauth/token的接口
-                .checkTokenAccess("permitAll()"); //url:/oauth/check_token allow check token
-//                .allowFormAuthenticationForClients();
+                .checkTokenAccess("permitAll()") //url:/oauth/check_token allow check token
+                .allowFormAuthenticationForClients();
     }
 
     /**
