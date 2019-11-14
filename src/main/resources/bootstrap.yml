@@ -29,3 +29,11 @@ eureka:
 logging:
   level:
     org.springframework.security: debug
+---
+spring:
+  profile: default
+server:
+  port: 8001
+eureka:
+  host: 127.0.0.1
+  port: 8761
